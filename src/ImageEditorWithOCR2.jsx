@@ -117,7 +117,7 @@ const ImageCropperOCR2 = () => {
                 <button
                   onClick={handleDownload}
                 >
-                  Download image
+                  Download
                 </button>
               </div>
               <img
