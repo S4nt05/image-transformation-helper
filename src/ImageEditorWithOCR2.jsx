@@ -102,7 +102,7 @@ const ImageCropperOCR2 = () => {
             style={{ fontSize: "18", marginTop: "10px" }}
             disabled={false}
           >
-            Crop
+            Cropp
           </CustomButton>
         </div>
       )}
