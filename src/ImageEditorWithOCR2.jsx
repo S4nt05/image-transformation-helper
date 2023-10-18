@@ -66,7 +66,8 @@ const ImageCropperOCR2 = () => {
   return (
     <div style={{ paddingLeft: "10px" }}>
       <h1>Convert images to text</h1>
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8591176787868089"
+     crossorigin="anonymous"></script>
       <CustomerFileInput onChange={handleImageChange} />
       {src && (
         <div style={{ width: "100%" }}>
