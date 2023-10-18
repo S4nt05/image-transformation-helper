@@ -18,7 +18,7 @@ function Anuncio() {
           data-ad-slot="8591176787868089"
           data-ad-format="auto"
           data-full-width-responsive="true">
-        ></ins>
+       </ins>
       </div>
     </div>
   );
