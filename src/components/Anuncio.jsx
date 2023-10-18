@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Anuncio() {
+  useEffect(() => {
+    // Pega aquí el código de anuncio de AdSense
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }, []);
+
   return (
     <div>
-     <meta name="google-adsense-account" content="ca-pub-8591176787868089">
+      <h2>Contenido de tu sitio</h2>
+      <div>
+        {/* Contenedor para el anuncio */}
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client="ca-pub-8591176787868089"
+          data-ad-slot="8591176787868089"
+          data-ad-format="auto"
+        ></ins>
+      </div>
     </div>
   );
 }
