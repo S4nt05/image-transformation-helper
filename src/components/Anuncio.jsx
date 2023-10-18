@@ -11,8 +11,8 @@ function Anuncio() {
         <ins
           className="adsbygoogle"
           style={{ display: 'block' }}
-          data-ad-client="ca-pub-8591176787868089"
-          data-ad-slot="8591176787868089"
+          data-ad-client="2491733330"
+          data-ad-slot="ca-pub-8591176787868089"
           data-ad-format="auto"
           data-full-width-responsive="true">
        </ins>
