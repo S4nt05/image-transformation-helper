@@ -4,7 +4,7 @@ import "cropperjs/dist/cropper.css";
 import Tesseract from "tesseract.js";
 import CustomerFileInput from "./components/FileInput";
 import CustomButton from "./components/CustomButton";
-import CustomButton from "./components/Anuncio";
+import Anuncio from "./components/Anuncio";
 
 const ImageCropperOCR2 = () => {
   const [src, setSrc] = useState(null);
