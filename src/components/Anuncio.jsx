@@ -8,9 +8,6 @@ function Anuncio() {
 
   return (
     <div>
-      <h2>Contenido de tu sitio</h2>
-      <div>
-        {/* Contenedor para el anuncio */}
         <ins
           className="adsbygoogle"
           style={{ display: 'block' }}
@@ -19,7 +16,6 @@ function Anuncio() {
           data-ad-format="auto"
           data-full-width-responsive="true">
        </ins>
-      </div>
     </div>
   );
 }
