@@ -4,6 +4,7 @@ import "cropperjs/dist/cropper.css";
 import Tesseract from "tesseract.js";
 import CustomerFileInput from "./components/FileInput";
 import CustomButton from "./components/CustomButton";
+import CustomButton from "./components/Anuncio";
 
 const ImageCropperOCR2 = () => {
   const [src, setSrc] = useState(null);
@@ -65,9 +66,9 @@ const ImageCropperOCR2 = () => {
   };
   return (
     <div style={{ paddingLeft: "10px" }}>
+    <Anuncio/>
+    <div style={{ paddingLeft: "10px" }}>
       <h1>Convert images to text</h1>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8591176787868089"
-     crossorigin="anonymous"></script>
       <CustomerFileInput onChange={handleImageChange} />
       {src && (
         <div style={{ width: "100%" }}>
@@ -154,6 +155,7 @@ const ImageCropperOCR2 = () => {
           <br style={{ clear: "both" }} />
         </div>
       )}
+    </div>
     </div>
   );
 };
