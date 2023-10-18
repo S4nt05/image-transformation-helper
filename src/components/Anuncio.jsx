@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 function Anuncio() {
   useEffect(() => {
     // Pega aquí el código de anuncio de AdSense
-    (adsbygoogle = window.adsbygoogle || []).push({});
+   (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 
   return (
@@ -17,6 +17,7 @@ function Anuncio() {
           data-ad-client="ca-pub-8591176787868089"
           data-ad-slot="8591176787868089"
           data-ad-format="auto"
+          data-full-width-responsive="true">
         ></ins>
       </div>
     </div>
