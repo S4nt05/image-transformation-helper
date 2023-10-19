@@ -8,8 +8,8 @@ function Anuncio() {
 
   return (
     <div>
-        <ins class="adsbygoogle"
-             style="display:block"
+	    <ins className="adsbygoogle"
+             style={{ display: "block" }}
              data-ad-client="ca-pub-8591176787868089"
              data-ad-slot="8718968437"
              data-ad-format="auto"
