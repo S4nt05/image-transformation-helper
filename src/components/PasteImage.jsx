@@ -29,7 +29,7 @@ export default function PasteImage({ setSrc }) {
       <input
         type='text'
         className='input-paste-image'
-        placeholder='Pegar Imagen Ctrl + V'
+        placeholder='Paste Image Ctrl + V'
         id='image'
         onPaste={handleChange}
         disabled
