@@ -5,6 +5,7 @@ import Tesseract from "tesseract.js";
 import CustomerFileInput from "./components/FileInput";
 import CustomButton from "./components/CustomButton";
 import Anuncio from "./components/Anuncio";
+import PasteImage from "./components/PasteImage";
 
 const ImageCropperOCR2 = () => {
   const [src, setSrc] = useState(null);
@@ -69,7 +70,10 @@ const ImageCropperOCR2 = () => {
     <Anuncio/>
     <div style={{ paddingLeft: "10px" }}>
       <h1>Convert images to text</h1>
+      <div style={{display: "flex"}}>
       <CustomerFileInput onChange={handleImageChange} />
+      <PasteImage setSrc={setSrc} />
+      </div>
       {src && (
         <div style={{ width: "100%" }}>
           <label>
