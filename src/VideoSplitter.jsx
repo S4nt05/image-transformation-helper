@@ -18,7 +18,6 @@ const VideoSplitter = () => {
   };
 
   const handleSegmentDurationChange = (event) => {
-    // setSegmentDuration(event.target.value);
     const value = parseInt(event.target.value, 10);
     setSegmentDuration(Math.min(10, Math.max(1, value)));
   };
@@ -30,7 +29,7 @@ const VideoSplitter = () => {
   const handleFooterTextChange = (event) => {
     setFooterText(event.target.value);
   };
-  // Función para mostrar el error durante 3 segundos
+
   const handleError = (errorMessage) => {
     setError(errorMessage);
     setTimeout(() => {
@@ -38,11 +37,32 @@ const VideoSplitter = () => {
     }, 3000);
   };
 
-  // const url = 'https://localhost:44379/api/';
-  //const url = 'http://localhost:8082/api/';
-  //const url = 'http://moises07-001-site1.ctempurl.com/';
-  //const url = 'https://videosplitter.azurewebsites.net/api/';
-  const url = 'https://videosplitter.azurewebsites.net/api/'
+  const url = 'https://localhost:44379/api/SegmentacionVideo';
+  
+  useEffect(() => {
+    // Lógica de verificación de salud al cargar el componente
+    const checkServerAvailability = async () => {
+      try {
+        const response = await fetch(`${url}/health`);
+        if (!response.ok) {
+          handleError('API is not available.');
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        handleError(`Error: ${error.message}`);
+        setLoading(false);
+      }
+    };
+    // Llamada a la función al montar el componente
+    checkServerAvailability();
+    // Configurar la verificación de salud cada 15 minutos
+    const healthCheckInterval = setInterval(checkServerAvailability, 15 * 60 * 1000);
+    // Limpiar el intervalo al desmontar el componente
+    return () => clearInterval(healthCheckInterval);
+  }, []); // El array de dependencias está vacío para que esta efecto solo se ejecute al montar y desmontar el componente
+
 
   useEffect(() => {
     let intervalId;
@@ -71,7 +91,6 @@ const VideoSplitter = () => {
 
   const handleUpload = async () => {
     try {
-      handleError(null);
       if (!file) {
         handleError('Please select a file.');
         return;
@@ -95,26 +114,24 @@ const VideoSplitter = () => {
       };
 
       xhr.onload = async () => {
-        // Independientemente de la respuesta del API, detenemos la simulación
         setUploading(false);
         setProgress(0);
 
         if (xhr.status === 200) {
           try {
-            // Validar si la respuesta es un archivo ZIP
             const contentType = xhr.getResponseHeader('Content-Type');
             if (contentType === 'application/zip') {
               const compressBlob = new Blob([xhr.response], { type: 'application/zip' });
-  
+
               const downloadLink = document.createElement('a');
               downloadLink.href = URL.createObjectURL(compressBlob);
-          downloadLink.download = (footerText !== "" ? footerText : titleText) + '_segments.zip';
+              downloadLink.download = (footerText !== "" ? footerText : titleText) + '_segments.zip';
               document.body.appendChild(downloadLink);
-  
+
               downloadLink.click();
               setProgress(100);
               document.body.removeChild(downloadLink);
-  
+
               handleError(null);
               setFile(null);
               setSegmentDuration(1);
@@ -133,18 +150,17 @@ const VideoSplitter = () => {
 
         setLoading(false);
       };
-      // Agregar datos de video al objeto
+
       const videoData = {
         segmentDuration: segmentDuration,
         titulo: titleText,
         pieVideo: footerText,
       };
 
-      // Convertir el objeto a una cadena JSON y agregarlo al formulario
       formData.append('video', JSON.stringify(videoData));
 
-      xhr.open('POST', `${url}SegmentacionVideo/upload`, true);
-      xhr.responseType = 'blob'; // Configurar responseType para manejar la respuesta como Blob
+      xhr.open('POST', `${url}/upload`, true);
+      xhr.responseType = 'blob';
       xhr.send(formData);
 
       xhrRef.current = xhr;
@@ -178,7 +194,7 @@ const VideoSplitter = () => {
           className="input file-input-label"
           id="idInput"
           onChange={handleFileChange}
-          disabled={loading}
+          disabled={!loading}
         />
       </div>
 
@@ -191,7 +207,7 @@ const VideoSplitter = () => {
           max="10"
           value={segmentDuration}
           onChange={handleSegmentDurationChange}
-          disabled={loading}
+          disabled={!loading}
         />
       </div>
 
@@ -202,7 +218,7 @@ const VideoSplitter = () => {
           className="input form-control"
           value={titleText}
           onChange={handleTitleTextChange}
-          disabled={loading}
+          disabled={!loading}
         />
       </div>
 
@@ -213,12 +229,12 @@ const VideoSplitter = () => {
           className="input form-control"
           value={footerText}
           onChange={handleFooterTextChange}
-          disabled={loading}
+          disabled={!loading}
         />
       </div>
 
       <div className="video-controls-container">
-        <button className="video-control-button" onClick={handleUpload} disabled={loading}>
+        <button className="video-control-button" onClick={handleUpload} disabled={!loading}>
           Upload and Process
         </button>
         <button onClick={handleAbort} disabled={!loading}>
@@ -227,7 +243,6 @@ const VideoSplitter = () => {
         {uploading && (
           <div className="progress-container">
             <progress value={progress} max="100" />
-            {/* {progress.toFixed(2)}% */}
           </div>
         )}
       </div>
