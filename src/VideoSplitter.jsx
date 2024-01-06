@@ -41,10 +41,10 @@ const VideoSplitter = () => {
     }, 3000);
   };
 
-  const url = 'https://localhost:44379/api/SegmentacionVideo';
+  //const url = 'https://localhost:44379/api/SegmentacionVideo';
   //const url = 'http://localhost:8082/api/';
   //const url = 'http://moises07-001-site1.ctempurl.com/';
-  //const url = 'https://videosplitter.azurewebsites.net/api/SegmentacionVideo';
+  const url = 'https://videosplitter.azurewebsites.net/api/SegmentacionVideo';
 
     let intervalId;
   useEffect(() => {
