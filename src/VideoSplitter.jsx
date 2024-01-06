@@ -37,7 +37,11 @@ const VideoSplitter = () => {
     }, 3000);
   };
 
-  const url = 'https://localhost:44379/api/SegmentacionVideo';
+  //const url = 'https://localhost:44379/api/SegmentacionVideo';
+  //const url = 'http://localhost:8082/api/';
+  //const url = 'http://moises07-001-site1.ctempurl.com/';
+  //const url = 'https://videosplitter.azurewebsites.net/api/';
+  const url = 'https://videosplitter.azurewebsites.net/api/SegmentacionVideo'
   
   useEffect(() => {
     // Lógica de verificación de salud al cargar el componente
