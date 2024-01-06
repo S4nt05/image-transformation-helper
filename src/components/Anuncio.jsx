@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 function Anuncio() {
   useEffect(() => {
     // Pega aquí el código de anuncio de AdSense
+    if (window.adsbygoogle && !window.adsbygoogle.loaded)
    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 

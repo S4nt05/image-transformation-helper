@@ -104,14 +104,207 @@ align-items: center;
 h1{
   margin-right: 10px;
 }
-/* .containerdiv{
-  display: flex;
-  flex-direction: column;
-align-items: flex-start;
- } */
-/* h1{
-  margin-right: 10px;
-} */
 button{
   margin-top : 10px;
+}
+
+/* Estilos para el input de tipo "number" */
+.number-input-container {
+  margin-top: 10px;
+}
+
+.number-input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100px;
+}
+
+/* Estilos adicionales para los controles de video */
+.video-controls-container {
+  margin-top: 20px;
+}
+
+.video-control-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.video-control-button:hover {
+  background-color: #0056b3;
+}
+
+.processing-message {
+  margin-top: 10px;
+}
+/* Estilos para el input de tipo "number" */
+.number-input-container {
+  margin-top: 10px;
+}
+
+.number-input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100px;
+}
+/* Estilo para la barra de progreso */
+.progress-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+progress {
+  width: 100%;
+  margin-right: 10px;
+}
+
+/* Estilo para el mensaje de procesamiento */
+.loading-message {
+  margin-top: 10px;
+}
+
+/* Estilo para el contenedor principal */
+body {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px; /* Ajusta el ancho máximo según tus necesidades */
+  border: 1px solid #3498db;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  min-width: 558px;
+}
+
+.title {
+  text-align: center;
+  color: #3498db;
+  margin-bottom: 20px;
+}
+
+/* Estilo para las cajas de texto */
+.input-container {
+  margin-bottom: 20px;
+}
+
+/* Estilo para las cajas de texto utilizando clases de Bootstrap */
+.input {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+/* Estilo para el botón utilizando clases de Bootstrap */
+.button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+/**/
+
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar li {
+  float: right;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.containerNav {
+  width: 100%;
+  max-width: 1200px; /* O ajusta según tus necesidades */
+  margin: 0 auto; /* Centra el contenido */
+  padding: 20px; /* Agrega espaciado interno según sea necesario */
+}
+.titleNav {
+  text-align: center;
+}
+/* Media queries para estilos responsivos */
+@media (max-width: 768px) {
+  /* Estilos específicos para pantallas más pequeñas (ejemplo: dispositivos móviles) */
+  .containerNav {
+    padding: 10px;
+  }
+
+  .titleNav {
+    font-size: 24px;
+  }
+}
+.cropper-component-container {
+  padding-left: 10px;
+}
+
+.cropper-content-container {
+  padding-left: 10px;
+}
+
+.image-inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cropper-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.result-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.img-preview {
+  max-width: 100%;
+}
+/* Estilo para las cajas de texto utilizando clases de Bootstrap */
+.containerdiv {
+  display: flex;
+  align-items: center;
 }

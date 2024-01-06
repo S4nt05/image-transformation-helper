@@ -1,0 +1,149 @@
+/* Estilo para el contenedor principal de ImageCropperOCR2 */
+.image-cropper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  overflow: visible !important; /* Importante: forzar el desbordamiento visible */
+}
+/* Estilo para el contenedor principal de la interfaz de Cropper */
+.cropper-main-container {
+width: 100%;
+max-width: 800px; /* Ajusta según sea necesario */
+background-color: #f9f9f9;
+box-sizing: border-box;
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+/* Estilo para el título */
+.cropper-title {
+text-align: center;
+color: #3498db;
+margin-bottom: 20px;
+}
+
+/* Estilo para los controles de imagen */
+.cropper-inputs-container {
+ display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+width: 100%;
+margin-bottom: 20px;
+}
+
+/* Estilo para el contenedor flex con centrado vertical y horizontal */
+.cropper-containerdiv {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+}
+
+/* Estilo para la caja que contiene la imagen recortada y el texto generado por OCR */
+.cropper-result-container {
+/* display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+width: 100%; */
+overflow: hidden !important;
+width: 100%; /* Ocupa todo el ancho disponible */
+height: auto; /* Ajusta automáticamente la altura según su contenido */
+}
+
+/* Estilo para el contenedor de la imagen recortada */
+.cropper-cropped-image-box {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: auto; /* Ajusta la altura de manera proporcional */
+}
+
+/* Estilo para el contenedor del texto generado por OCR */
+.cropper-ocr-text-box {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  box-sizing: border-box;
+  margin-top: 20px;
+  overflow: auto; /* Si el texto es largo, permite desplazamiento vertical */
+}
+
+/* Estilo para el botón de descarga */
+.cropper-custom-button {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.cropper-custom-button:hover {
+  background-color: #0056b3;
+}
+/* Ajustes para la clase .cropper-face y sus descendientes */
+.cropper-face,
+.cropper-line,
+.cropper-point {
+background-color: transparent !important; /* Garantiza que el fondo sea transparente */
+border: 1px solid #39f; /* Añade un borde visible */
+}
+
+/* Ajustes para el contenedor principal .cropper-cropper-container */
+.cropper-cropper-container {
+
+  height: auto; /* Ajusta automáticamente la altura según su contenido */
+
+}
+
+/* Ajustes adicionales para garantizar la visibilidad completa de Cropper */
+.cropper-canvas {
+max-width: none !important; /* Asegura que no haya una anchura máxima */
+}
+
+.cropper-view-box,
+.cropper-drag-box,
+.cropper-canvas img {
+max-width: 100% !important; /* Asegura que la imagen y los contenedores no tengan una anchura máxima */
+}
+
+.cropper-canvas img {
+max-width: 100% !important; /* Asegura que la imagen no tenga una anchura máxima */
+}
+
+/* Ajustes para el texto y otros elementos adicionales */
+.box {
+overflow: hidden; /* Asegura que no haya desbordamiento visible en los elementos de texto */
+}
+
+.containerdiv {
+display: flex;
+align-items: center;
+}
+
+/* Ajustes para el navbar */
+nav {
+/* width: 100%; */
+padding: 2px;
+background-color: #3498db;
+/* color: white; */
+}
+
+/* .divStyle  {
+  border: "1px solid #3498db";
+  padding: "20px";
+  margin-bottom: "20px";
+  background-color: "#f9f9f9";
+  color: "#3498db";
+} */
+
+.containerImage {
+  width: 100%;
+  max-width: 600px; /* Ajusta el ancho máximo según tus necesidades */
+  border: 1px solid #3498db;
+  padding-top: 1000px;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}

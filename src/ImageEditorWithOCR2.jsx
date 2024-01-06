@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import Cropper from "react-cropper";
-import "cropperjs/dist/cropper.css"; 
+import "cropperjs/dist/cropper.css";
 import Tesseract from "tesseract.js";
-import CustomerFileInput from "./components/FileInput";
+import CustomFileInput from "./components/FileInput";
 import CustomButton from "./components/CustomButton";
 import Anuncio from "./components/Anuncio";
 import PasteImage from "./components/PasteImage";
+import './CSS/StyleImageEditorWithOCR2.css'; // Importa tus estilos CSS
 
 const ImageCropperOCR2 = () => {
   const [src, setSrc] = useState(null);
@@ -14,7 +15,7 @@ const ImageCropperOCR2 = () => {
   const [useCrop, setUseCrop] = useState(true);
   const cropperRef = useRef(null);
   const cropperRefNewState = useRef(useCrop);
-  
+
   useEffect(() => {
     if (src && useCrop) {
       handleCrop();
@@ -32,6 +33,7 @@ const ImageCropperOCR2 = () => {
       reader.readAsDataURL(file);
     }
   };
+
   const handleCrop = async () => {
     if (cropperRef.current) {
       const croppedCanvas = cropperRef.current?.cropper.getCroppedCanvas();
@@ -42,11 +44,13 @@ const ImageCropperOCR2 = () => {
       }
     }
   };
+
   const onCropMove = (e) => {
     if (cropperRefNewState.current) {
       handleCrop();
     }
   };
+
   const performOCR = async (imageData) => {
     setOcrText("Processing...");
     try {
@@ -57,6 +61,7 @@ const ImageCropperOCR2 = () => {
       setOcrText("Error processing image.");
     }
   };
+
   const handleDownload = () => {
     if (croppedImage) {
       const link = document.createElement("a");
@@ -65,66 +70,82 @@ const ImageCropperOCR2 = () => {
       link.click();
     }
   };
-  return (
-    <div style={{ paddingLeft: "10px" }}>
-    <Anuncio/>
-    <div style={{ paddingLeft: "10px" }}>
-      <h1>Convert images to text</h1>
-      <div style={{display: "flex"}}>
-      <CustomerFileInput onChange={handleImageChange} />
-      <PasteImage setSrc={setSrc} />
-      </div>
-      {src && (
-        <div style={{ width: "100%" }}>
-          <label>
-            <input
-              type="checkbox"
-              checked={useCrop}
-              onChange={() => {
-                cropperRefNewState.current = !useCrop;
-                setUseCrop(!useCrop);
-                }}
-            />
-            automatic
-          </label>
-          <Cropper
-            style={{ height: 400, width: "100%" }}
-            initialAspectRatio={1}
-            preview=".img-preview"
-            src={src}
-            ref={cropperRef}
-            viewMode={1}
-            guides={true}
-            minCropBoxHeight={10}
-            minCropBoxWidth={10}
-            background={false}
-            responsive={true}
-            checkOrientation={false}
-            cropend={() => onCropMove()}
-          />
-          <CustomButton
-            onClick={handleCrop}
-            className="custom-button"
-            style={{ fontSize: "18", marginTop: "10px" }}
-            disabled={false}
-          >
-            Cropp
-          </CustomButton>
-        </div>
-      )}
 
-      {croppedImage && (
-        <div style={{ paddingLeft: "10px" }}>
-          <div>
-            <div className="box" style={{ width: "50%", float: "right" }}>
-              
-            <div className="containerdiv">
-                <h1><span>Cropped</span></h1>
-                <button
-                  onClick={handleDownload}
-                >
-                  Download
-                </button>
+  return (
+    <div className="cropper-main-container" >
+      <Anuncio />
+        <div className="cropper-title-div">
+          <h1 className="cropper-title">Convert images to text</h1>
+        </div>
+
+        <div className="cropper-inputs-container">
+          <div className="cropper-file-input-div">
+            <CustomFileInput onChange={handleImageChange} />
+          </div>
+          <div className="cropper-paste-image-div">
+            <PasteImage setSrc={setSrc} />
+          </div>
+        </div>
+        {src && (
+          <>
+          <hr style={{width: '100%', border: 'none', borderBottom: '1px solid #3498db'}}></hr>
+          <div className="cropper-cropper-container">
+            <div className="cropper-checkbox-div">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={useCrop}
+                  onChange={() => {
+                    cropperRefNewState.current = !useCrop;
+                    setUseCrop(!useCrop);
+                  }}
+                />
+                automatic
+              </label>
+            </div>
+
+            <div className="cropper-cropper-div">
+              <Cropper
+                style={{ height: 400, width: "100%" }}
+                initialAspectRatio={1}
+                preview=".img-preview"
+                src={src}
+                ref={cropperRef}
+                viewMode={1}
+                guides={true}
+                minCropBoxHeight={10}
+                minCropBoxWidth={10}
+                background={false}
+                responsive={true}
+                checkOrientation={false}
+                cropend={() => onCropMove()}
+              />
+            </div>
+
+            <div className="cropper-button-div">
+              <CustomButton
+                onClick={handleCrop}
+                className="cropper-custom-button"
+                style={{ fontSize: "18", marginTop: "10px" }}
+                disabled={false}
+              >
+                Crop
+              </CustomButton>
+            </div>
+          </div>
+          </>
+        )}
+        
+        {croppedImage && (
+          <>
+          <hr style={{width: '100%', border: 'none', borderBottom: '1px solid #3498db'}}></hr>
+          <div className="cropper-result-container">
+            <div className="cropper-cropped-image-box">
+              <div className="cropper-containerdiv">
+                <h1>
+                  <span>Cropped</span>
+                </h1>
+                <button onClick={handleDownload}>Download</button>
               </div>
               <img
                 className="img-preview"
@@ -133,12 +154,10 @@ const ImageCropperOCR2 = () => {
                 style={{ maxWidth: "100%" }}
               />
             </div>
+            <hr style={{width: '100%', border: 'none', borderBottom: '1px solid #3498db'}}></hr>
             {ocrText && (
-              <div
-                className="box"
-                style={{ width: "50%", float: "left", height: "300px" }}
-              >
-                <div className="containerdiv">
+              <div className="cropper-ocr-text-box">
+                <div className="cropper-containerdiv">
                   <h1>
                     <span>Image Text</span>
                   </h1>
@@ -156,11 +175,10 @@ const ImageCropperOCR2 = () => {
               </div>
             )}
           </div>
-          <br style={{ clear: "both" }} />
-        </div>
-      )}
-    </div>
+          </>
+        )}
     </div>
   );
 };
+
 export default ImageCropperOCR2;
