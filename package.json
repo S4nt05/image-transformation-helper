@@ -13,7 +13,7 @@
     "react": "^18.2.0",
     "react-cropper": "^2.3.3",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0",
+    "react-router-dom": "^6.30.3",
     "tesseract.js": "^5.0.2"
   },
   "devDependencies": {
