@@ -6,8 +6,8 @@ import {
   Link,
 } from 'react-router-dom';
 import ImageEditorWithOCR2 from './ImageEditorWithOCR2';
-import VideoSplitter from './VideoSplitter';
-import './CSS/StyleCropper.css'; // Ajusta la ruta según la ubicación de tu archivo CSS
+// import VideoSplitter from './VideoSplitter';  // COMENTADO - Deshabilitado temporalmente
+import './CSS/StyleCropper.css';
 
 function App() {
   return (
@@ -17,15 +17,15 @@ function App() {
           <li>
             <Link to="/">Image Editor</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/VideoSplitter">Video Splitter</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <div className="container">
         <Routes>
           <Route path="/" element={<ImageEditorWithOCR2 />} />
-          <Route path="/VideoSplitter" element={<VideoSplitter />} />
+          {/* <Route path="/VideoSplitter" element={<VideoSplitter />} /> */}
         </Routes>
       </div>
       <div style={{marginTop:'10px'}}>
