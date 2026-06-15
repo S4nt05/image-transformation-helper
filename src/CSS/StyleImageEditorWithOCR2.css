@@ -147,7 +147,15 @@ background-color: #3498db;
   background-color: #f9f9f9;
   box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
+
 .cropper-ocr-text-box div,
 .cropper-ocr-text-box {
+  color: #000000 !important;
+}
+
+/* Solución para el texto blanco - forzar colores oscuros */
+.cropper-containerdiv h1,
+.cropper-containerdiv h1 span,
+.cropper-ocr-text-box div {
   color: #000000 !important;
 }
